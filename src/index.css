@@ -21,7 +21,12 @@
     @apply px-4 sm:px-6 lg:px-8;
   }
 }
-
+.arrow{
+  margin: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
 
 .card{
   display: flex;
@@ -63,4 +68,15 @@ body::-webkit-scrollbar-thumb {
     scrollbar-color: var(--sb-thumb-color)
                      var(--sb-track-color);
   }
+}
+
+
+@media (max-width: 768px) {
+ .btn{
+  width: 50%;
+  margin: auto;
+ }
+ .pp{
+  margin-bottom: 100px;
+ }
 }

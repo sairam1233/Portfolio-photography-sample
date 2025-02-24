@@ -1,7 +1,20 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const FollowCursor: React.FC = () => {
+  const [isBigScreen, setIsBigScreen] = useState(window.innerWidth > 768);
+
   useEffect(() => {
+    const checkScreenSize = () => {
+      setIsBigScreen(window.innerWidth > 768);
+    };
+
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
+  useEffect(() => {
+    if (!isBigScreen) return; // Disable effect for small screens
+
     let canvas: HTMLCanvasElement | null;
     let context: CanvasRenderingContext2D | null;
     let animationFrame: number;
@@ -28,8 +41,8 @@ const FollowCursor: React.FC = () => {
         this.position.x += (x - this.position.x) / this.lag;
         this.position.y += (y - this.position.y) / this.lag;
         context.fillStyle = this.color;
-        context.shadowColor = this.color; // Add glow effect
-        context.shadowBlur = 15; // Smooth glow
+        context.shadowColor = this.color;
+        context.shadowBlur = 15;
         context.beginPath();
         context.arc(this.position.x, this.position.y, this.width, 0, 2 * Math.PI);
         context.fill();
@@ -37,7 +50,7 @@ const FollowCursor: React.FC = () => {
       }
     }
 
-    const dot = new Dot(width / 2, height / 2, 10, 10, "#9333ea"); // Ensure Purple-600 color
+    const dot = new Dot(width / 2, height / 2, 10, 10, "#9333ea");
 
     const onMouseMove = (e: MouseEvent) => {
       cursor.x = e.clientX;
@@ -109,14 +122,9 @@ const FollowCursor: React.FC = () => {
     return () => {
       destroy();
     };
-  }, []);
+  }, [isBigScreen]);
 
-  return (
-    <div
-      className="fixed top-0 left-0 w-full h-full pointer-events-none"
-    >
-    </div>
-  );
+  return null; // No need to return anything visually
 };
 
 export default FollowCursor;

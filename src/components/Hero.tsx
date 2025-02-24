@@ -8,6 +8,7 @@ import "swiper/css/effect-fade";
 import "swiper/css/parallax";
 import FollowCursor from "../components/FollowCursor";
 
+
 export default function Hero() {
   const [isDark, setIsDark] = useState(false);
 
@@ -111,7 +112,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-lg text-gray-200 max-w-2xl mx-auto mt-4"
+          className="pp text-lg text-gray-200 max-w-2xl mx-auto mt-4"
         >
           Through our lens, we transform fleeting moments into timeless memories.
         </motion.p>
@@ -128,7 +129,7 @@ export default function Hero() {
           href="#portfolio"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="inline-flex items-center justify-center px-8 py-4 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group"
+          className="btn inline-flex items-center justify-center px-8 py-4 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg group"
         >
           View Portfolio
           <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -137,7 +138,7 @@ export default function Hero() {
           href="#contact"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white/20 text-white rounded-full hover:bg-white/20 transition-all duration-300 group"
+          className="btn inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white/20 text-white rounded-full hover:bg-white/20 transition-all duration-300 group"
         >
            Contact Now
           <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -145,14 +146,15 @@ export default function Hero() {
       </motion.div>
 
       {/* Scroll Indicator */}
-      <motion.div
+      <motion.a
         initial={{ opacity: 0, y: -10 }}
+        href="#about"
         animate={{ opacity: 1, y: 10 }}
         transition={{ repeat: Infinity, repeatType: "reverse", duration: 1.2 }}
-        className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-white"
+        className="arrow1  absolute bottom-6 text-center  transform -translate-x-1/2 text-white"
       >
-        <ChevronDown className="h-10 w-10 opacity-80" />
-      </motion.div>
+        <ChevronDown className=" arrow1 h-10 w-10 opacity-80" />
+      </motion.a>
     </div>
   );
 }

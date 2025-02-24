@@ -35,7 +35,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Camera className="h-8 w-8 text-purple-600" />
-            <span className="ml-2 text-xl font-bold">Vinay Photography</span>
+            <span className="ml-2 text-xl font-bold"> Photography</span>
           </div>
 
           {/* Desktop Navigation */}
